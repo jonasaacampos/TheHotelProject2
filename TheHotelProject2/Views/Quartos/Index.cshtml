@@ -3,6 +3,26 @@
     ViewBag.Title = "Index";
 }
 
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    }
+    );
+
+    function DisplayImage(result) {
+        if (result.files && result.files[0]) {
+            var fileReader = new FileReader;
+            fileReader.onload = function (e) {
+                $("#quartoFoto").attr('src', e.target.result);
+            }
+
+            fileReader.readAsDataURL(result.files[0]);
+        }
+    }
+
+</script>
+
 
 <div style="margin-top: 51px">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddQuarto" data-backdrop="static"
@@ -60,7 +80,7 @@
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.QuartoFoto)
-                        <input type="file" class="form-control" name="quartoFoto" title="Inserir Foto" />
+                        <input type="file" class="form-control" name="quartoFoto" title="Inserir Foto" onchange="DisplayImage(this)" />
                         <img id="quartoFoto" height="150" width="150" style="border: solid; margin: 15px" />
                     </div>
 
