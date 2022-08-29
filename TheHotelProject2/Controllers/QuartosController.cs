@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using TheHotelProject2.Models;
 using TheHotelProject2.ViewModel;
+using System.Web.Mvc.Html;
 
 namespace TheHotelProject2.Controllers
 {
