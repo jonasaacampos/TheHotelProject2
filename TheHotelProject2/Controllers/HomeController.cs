@@ -13,18 +13,28 @@ namespace TheHotelProject2.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Contato()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+
+        public ActionResult Sobre()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+
+        public ActionResult Service()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Your application description page.";
 
             return View();
         }
+
     }
 }

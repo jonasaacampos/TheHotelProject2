@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HotelDBModelStoreContainer" CdmEntityContainer="HotelDBEntities">
+    <EntitySetMapping Name="Pagamentos">
+      <EntityTypeMapping TypeName="HotelDBModel.Pagamentos">
+        <MappingFragment StoreEntitySet="Pagamentos">
+          <ScalarProperty Name="PagamentoId" ColumnName="PagamentoId" />
+          <ScalarProperty Name="ReservaId" ColumnName="ReservaId" />
+          <ScalarProperty Name="PagamentoTipoId" ColumnName="PagamentoTipoId" />
+          <ScalarProperty Name="PagamentoValor" ColumnName="PagamentoValor" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quartos">
+      <EntityTypeMapping TypeName="HotelDBModel.Quartos">
+        <MappingFragment StoreEntitySet="Quartos">
+          <ScalarProperty Name="QuartoId" ColumnName="QuartoId" />
+          <ScalarProperty Name="QuartoNumero" ColumnName="QuartoNumero" />
+          <ScalarProperty Name="QuartoFoto" ColumnName="QuartoFoto" />
+          <ScalarProperty Name="QuartoPreco" ColumnName="QuartoPreco" />
+          <ScalarProperty Name="ReservaStatusId" ColumnName="ReservaStatusId" />
+          <ScalarProperty Name="QuartoTipoID" ColumnName="QuartoTipoID" />
+          <ScalarProperty Name="QuartoCapacidade" ColumnName="QuartoCapacidade" />
+          <ScalarProperty Name="QuartoDescricao" ColumnName="QuartoDescricao" />
+          <ScalarProperty Name="QuartoDisponivel" ColumnName="QuartoDisponivel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuartosReservados">
+      <EntityTypeMapping TypeName="HotelDBModel.QuartosReservados">
+        <MappingFragment StoreEntitySet="QuartosReservados">
+          <ScalarProperty Name="ReservaId" ColumnName="ReservaId" />
+          <ScalarProperty Name="ClienteNome" ColumnName="ClienteNome" />
+          <ScalarProperty Name="ClienteEndereco" ColumnName="ClienteEndereco" />
+          <ScalarProperty Name="ReservadoDataInicial" ColumnName="ReservadoDataInicial" />
+          <ScalarProperty Name="ReservaDataFinal" ColumnName="ReservaDataFinal" />
+          <ScalarProperty Name="QuartoReservadoId" ColumnName="QuartoReservadoId" />
+          <ScalarProperty Name="QuantidadePessoas" ColumnName="QuantidadePessoas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PagamentosTipo">
+      <EntityTypeMapping TypeName="HotelDBModel.PagamentosTipo">
+        <MappingFragment StoreEntitySet="PagamentosTipo">
+          <ScalarProperty Name="PagamentoTipoId" ColumnName="PagamentoTipoId" />
+          <ScalarProperty Name="PagamentoTipo" ColumnName="PagamentoTipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuartosTipo">
+      <EntityTypeMapping TypeName="HotelDBModel.QuartosTipo">
+        <MappingFragment StoreEntitySet="QuartosTipo">
+          <ScalarProperty Name="QuartoTipoID" ColumnName="QuartoTipoID" />
+          <ScalarProperty Name="QuartoTipo" ColumnName="QuartoTipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReservaStatus">
+      <EntityTypeMapping TypeName="HotelDBModel.ReservaStatus">
+        <MappingFragment StoreEntitySet="ReservaStatus">
+          <ScalarProperty Name="ReservaStatusId" ColumnName="ReservaStatusId" />
+          <ScalarProperty Name="ReservaStatus1" ColumnName="ReservaStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

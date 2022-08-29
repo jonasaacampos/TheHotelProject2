@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HotelDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Pagamentos">
+    <Key>
+      <PropertyRef Name="PagamentoId" />
+    </Key>
+    <Property Name="PagamentoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReservaId" Type="Int32" Nullable="false" />
+    <Property Name="PagamentoTipoId" Type="Int32" Nullable="false" />
+    <Property Name="PagamentoValor" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Quartos">
+    <Key>
+      <PropertyRef Name="QuartoId" />
+    </Key>
+    <Property Name="QuartoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuartoNumero" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="QuartoFoto" Type="String" MaxLength="550" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="QuartoPreco" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ReservaStatusId" Type="Int32" Nullable="false" />
+    <Property Name="QuartoTipoID" Type="Int32" Nullable="false" />
+    <Property Name="QuartoCapacidade" Type="Int32" Nullable="false" />
+    <Property Name="QuartoDescricao" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="QuartoDisponivel" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="QuartosReservados">
+    <Key>
+      <PropertyRef Name="ReservaId" />
+    </Key>
+    <Property Name="ReservaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClienteNome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ClienteEndereco" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ReservadoDataInicial" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ReservaDataFinal" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="QuartoReservadoId" Type="Int32" Nullable="false" />
+    <Property Name="QuantidadePessoas" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PagamentosTipo">
+    <Key>
+      <PropertyRef Name="PagamentoTipoId" />
+    </Key>
+    <Property Name="PagamentoTipoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PagamentoTipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QuartosTipo">
+    <Key>
+      <PropertyRef Name="QuartoTipoID" />
+    </Key>
+    <Property Name="QuartoTipoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuartoTipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReservaStatus">
+    <Key>
+      <PropertyRef Name="ReservaStatusId" />
+    </Key>
+    <Property Name="ReservaStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReservaStatus1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="HotelDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Pagamentos" EntityType="Self.Pagamentos" />
+    <EntitySet Name="Quartos" EntityType="Self.Quartos" />
+    <EntitySet Name="QuartosReservados" EntityType="Self.QuartosReservados" />
+    <EntitySet Name="PagamentosTipo" EntityType="Self.PagamentosTipo" />
+    <EntitySet Name="QuartosTipo" EntityType="Self.QuartosTipo" />
+    <EntitySet Name="ReservaStatus" EntityType="Self.ReservaStatus" />
+  </EntityContainer>
+</Schema>

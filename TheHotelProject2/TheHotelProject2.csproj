@@ -129,6 +129,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QuartosController.cs" />
+    <Compile Include="Controllers\ReservasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -137,10 +139,33 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HotelDBModel.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HotelDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\HotelDBModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HotelDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pagamentos.cs">
+      <DependentUpon>HotelDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PagamentosTipo.cs">
+      <DependentUpon>HotelDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Quartos.cs">
+      <DependentUpon>HotelDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuartosReservados.cs">
+      <DependentUpon>HotelDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuartosTipo.cs">
+      <DependentUpon>HotelDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReservaStatus.cs">
+      <DependentUpon>HotelDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -156,6 +181,12 @@
     <Content Include="Models\HotelDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>HotelDBModel.Context.cs</LastGenOutput>
+      <DependentUpon>HotelDBModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\HotelDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HotelDBModel.edmx</DependentUpon>
+      <LastGenOutput>HotelDBModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -163,9 +194,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>HotelDBModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\HotelDBModel.edmx.diagram">
+    <Content Include="Models\HotelDBModel.edmx.diagram">
       <DependentUpon>HotelDBModel.edmx</DependentUpon>
-    </None>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -188,9 +219,12 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Contato.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Sobre.cshtml" />
+    <Content Include="Views\Home\Service.cshtml" />
+    <Content Include="Views\Quartos\Index.cshtml" />
+    <Content Include="Views\Reservas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
