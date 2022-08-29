@@ -6,9 +6,37 @@
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+        $('#btn-save').click(function () {
+            SalvarDadosDoQuarto();
+        });
+    });
+
+    function SalvarDadosDoQuarto() {
+        var formData = new FormData;
+        formData.append("QuartoNumero", $("#txtQuartoNumero").val());
+        formData.append("QuartoPreco", $("#txtQuartoPreco").val());
+        formData.append("ReservaStatusId", $("#ddReservaStatus").val());
+        formData.append("QuartoTipoID", $("#ddQuartoTipo").val());
+        formData.append("QuartoCapacidade", $("#txtQuartoCapacidade").val());
+        formData.append("QuartoDescricao", $("#txtQuartoDescricao").val());
+        formData.append("Image", $("#uploadImage").get(0).files[0]);
+
+        $.ajax({
+            async: true,
+            type: 'POST',
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function (data) {
+
+            },
+
+            error: function () {
+                alert('Ocorreu algum problema para salvar a informação.\nPor gentileza, tente novamente daqui alguns minutos.')
+            }
+        })
 
     }
-    );
 
     function DisplayImage(result) {
         if (result.files && result.files[0]) {
@@ -50,38 +78,38 @@
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.QuartoNumero)
-                        @Html.TextBoxFor(model => model.QuartoNumero, htmlAttributes: new { @class = "form-control" })
+                        @Html.TextBoxFor(model => model.QuartoNumero, htmlAttributes: new { @class = "form-control", id = "txtQuartoNumero" })
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.QuartoPreco)
-                        @Html.TextBoxFor(model => model.QuartoPreco, htmlAttributes: new { @class = "form-control" })
+                        @Html.TextBoxFor(model => model.QuartoPreco, htmlAttributes: new { @class = "form-control", id = "txtQuartoPreco" })
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.ReservaStatusId)
-                        @Html.DropDownListFor(model => model.ReservaStatusId, Model.ListaReservaStatus, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownListFor(model => model.ReservaStatusId, Model.ListaReservaStatus, htmlAttributes: new { @class = "form-control", id = "ddReservaStatus" })
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.QuartoTipoID)
-                        @Html.DropDownListFor(model => model.QuartoTipoID, Model.ListaQuartoTipo, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownListFor(model => model.QuartoTipoID, Model.ListaQuartoTipo, htmlAttributes: new { @class = "form-control", id = "ddQuartoTipo" })
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.QuartoCapacidade)
-                        @Html.TextBoxFor(model => model.QuartoCapacidade, htmlAttributes: new { @class = "form-control" })
+                        @Html.TextBoxFor(model => model.QuartoCapacidade, htmlAttributes: new { @class = "form-control", id = "txtQuartoCapacidade" })
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.QuartoDescricao)
-                        @Html.TextBoxFor(model => model.QuartoDescricao, htmlAttributes: new { @class = "form-control" })
+                        @Html.TextBoxFor(model => model.QuartoDescricao, htmlAttributes: new { @class = "form-control", id = "txtQuartoDescricao" })
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.QuartoFoto)
-                        <input type="file" class="form-control" name="quartoFoto" title="Inserir Foto" onchange="DisplayImage(this)" />
-                        <img id="quartoFoto" height="150" width="150" style="border: solid; margin: 15px" />
+                        <input type="file" id="uploadImage" class="form-control" name="quartoFoto" title="Inserir Foto" onchange="DisplayImage(this)" />
+                        <img id="quartoFoto" height="250" width="250" style="border: solid; margin: 15px" />
                     </div>
 
                 </div>
@@ -89,7 +117,7 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-success">Salvar</button>&nbsp;
+                <button type="button" id="btn-save" class="btn btn-success">Salvar</button>&nbsp;
                 <button type="button" data-dismiss="modal" class="btn btn-danger">Cancelar</button>
             </div>
         </div>

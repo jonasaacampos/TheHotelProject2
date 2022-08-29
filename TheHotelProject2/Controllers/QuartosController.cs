@@ -32,14 +32,20 @@ namespace TheHotelProject2.Controllers
 
 
             objQuartosViewModel.ListaQuartoTipo = (from obj in objHotelDBEntities.QuartosTipo
-                                                      select new SelectListItem()
-                                                      {
-                                                          Text = obj.QuartoTipo,
-                                                          Value = obj.QuartoTipoID.ToString()
-                                                      }).ToList();
+                                                   select new SelectListItem()
+                                                   {
+                                                       Text = obj.QuartoTipo,
+                                                       Value = obj.QuartoTipoID.ToString()
+                                                   }).ToList();
 
 
             return View(objQuartosViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Index(QuartosViewModel objQuartosViewModel)
+        {
+            return Json("", JsonRequestBehavior.AllowGet);
         }
     }
 }
