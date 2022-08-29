@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HotelDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Pagamentos">
+          <Key>
+            <PropertyRef Name="PagamentoId" />
+          </Key>
+          <Property Name="PagamentoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReservaId" Type="int" Nullable="false" />
+          <Property Name="PagamentoTipoId" Type="int" Nullable="false" />
+          <Property Name="PagamentoValor" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Quartos">
+          <Key>
+            <PropertyRef Name="QuartoId" />
+          </Key>
+          <Property Name="QuartoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuartoNumero" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="QuartoFoto" Type="nvarchar" MaxLength="550" Nullable="false" />
+          <Property Name="QuartoPreco" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ReservaStatusId" Type="int" Nullable="false" />
+          <Property Name="QuartoTipoID" Type="int" Nullable="false" />
+          <Property Name="QuartoCapacidade" Type="int" Nullable="false" />
+          <Property Name="QuartoDescricao" Type="nvarchar" MaxLength="500" />
+          <Property Name="QuartoDisponivel" Type="bit" />
+        </EntityType>
+        <EntityType Name="QuartosReservados">
+          <Key>
+            <PropertyRef Name="ReservaId" />
+          </Key>
+          <Property Name="ReservaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClienteNome" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="ClienteEndereco" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ReservadoDataInicial" Type="date" Nullable="false" />
+          <Property Name="ReservaDataFinal" Type="date" Nullable="false" />
+          <Property Name="QuartoReservadoId" Type="int" Nullable="false" />
+          <Property Name="QuantidadePessoas" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PagamentosTipo">
+          <Key>
+            <PropertyRef Name="PagamentoTipoId" />
+          </Key>
+          <Property Name="PagamentoTipoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PagamentoTipo" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QuartosTipo">
+          <Key>
+            <PropertyRef Name="QuartoTipoID" />
+          </Key>
+          <Property Name="QuartoTipoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuartoTipo" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReservaStatus">
+          <Key>
+            <PropertyRef Name="ReservaStatusId" />
+          </Key>
+          <Property Name="ReservaStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReservaStatus" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="HotelDBModelStoreContainer">
+          <EntitySet Name="Pagamentos" EntityType="Self.Pagamentos" Schema="Hotel" store:Type="Tables" />
+          <EntitySet Name="Quartos" EntityType="Self.Quartos" Schema="Hotel" store:Type="Tables" />
+          <EntitySet Name="QuartosReservados" EntityType="Self.QuartosReservados" Schema="Hotel" store:Type="Tables" />
+          <EntitySet Name="PagamentosTipo" EntityType="Self.PagamentosTipo" Schema="Master" store:Type="Tables" />
+          <EntitySet Name="QuartosTipo" EntityType="Self.QuartosTipo" Schema="Master" store:Type="Tables" />
+          <EntitySet Name="ReservaStatus" EntityType="Self.ReservaStatus" Schema="Master" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HotelDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Pagamentos">
+          <Key>
+            <PropertyRef Name="PagamentoId" />
+          </Key>
+          <Property Name="PagamentoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReservaId" Type="Int32" Nullable="false" />
+          <Property Name="PagamentoTipoId" Type="Int32" Nullable="false" />
+          <Property Name="PagamentoValor" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Quartos">
+          <Key>
+            <PropertyRef Name="QuartoId" />
+          </Key>
+          <Property Name="QuartoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuartoNumero" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QuartoFoto" Type="String" MaxLength="550" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QuartoPreco" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ReservaStatusId" Type="Int32" Nullable="false" />
+          <Property Name="QuartoTipoID" Type="Int32" Nullable="false" />
+          <Property Name="QuartoCapacidade" Type="Int32" Nullable="false" />
+          <Property Name="QuartoDescricao" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QuartoDisponivel" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="QuartosReservados">
+          <Key>
+            <PropertyRef Name="ReservaId" />
+          </Key>
+          <Property Name="ReservaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClienteNome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClienteEndereco" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReservadoDataInicial" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ReservaDataFinal" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="QuartoReservadoId" Type="Int32" Nullable="false" />
+          <Property Name="QuantidadePessoas" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PagamentosTipo">
+          <Key>
+            <PropertyRef Name="PagamentoTipoId" />
+          </Key>
+          <Property Name="PagamentoTipoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PagamentoTipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QuartosTipo">
+          <Key>
+            <PropertyRef Name="QuartoTipoID" />
+          </Key>
+          <Property Name="QuartoTipoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuartoTipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReservaStatus">
+          <Key>
+            <PropertyRef Name="ReservaStatusId" />
+          </Key>
+          <Property Name="ReservaStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReservaStatus1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="HotelDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Pagamentos" EntityType="Self.Pagamentos" />
+          <EntitySet Name="Quartos" EntityType="Self.Quartos" />
+          <EntitySet Name="QuartosReservados" EntityType="Self.QuartosReservados" />
+          <EntitySet Name="PagamentosTipo" EntityType="Self.PagamentosTipo" />
+          <EntitySet Name="QuartosTipo" EntityType="Self.QuartosTipo" />
+          <EntitySet Name="ReservaStatus" EntityType="Self.ReservaStatus" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HotelDBModelStoreContainer" CdmEntityContainer="HotelDBEntities">
+          <EntitySetMapping Name="Pagamentos">
+            <EntityTypeMapping TypeName="HotelDBModel.Pagamentos">
+              <MappingFragment StoreEntitySet="Pagamentos">
+                <ScalarProperty Name="PagamentoId" ColumnName="PagamentoId" />
+                <ScalarProperty Name="ReservaId" ColumnName="ReservaId" />
+                <ScalarProperty Name="PagamentoTipoId" ColumnName="PagamentoTipoId" />
+                <ScalarProperty Name="PagamentoValor" ColumnName="PagamentoValor" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quartos">
+            <EntityTypeMapping TypeName="HotelDBModel.Quartos">
+              <MappingFragment StoreEntitySet="Quartos">
+                <ScalarProperty Name="QuartoId" ColumnName="QuartoId" />
+                <ScalarProperty Name="QuartoNumero" ColumnName="QuartoNumero" />
+                <ScalarProperty Name="QuartoFoto" ColumnName="QuartoFoto" />
+                <ScalarProperty Name="QuartoPreco" ColumnName="QuartoPreco" />
+                <ScalarProperty Name="ReservaStatusId" ColumnName="ReservaStatusId" />
+                <ScalarProperty Name="QuartoTipoID" ColumnName="QuartoTipoID" />
+                <ScalarProperty Name="QuartoCapacidade" ColumnName="QuartoCapacidade" />
+                <ScalarProperty Name="QuartoDescricao" ColumnName="QuartoDescricao" />
+                <ScalarProperty Name="QuartoDisponivel" ColumnName="QuartoDisponivel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuartosReservados">
+            <EntityTypeMapping TypeName="HotelDBModel.QuartosReservados">
+              <MappingFragment StoreEntitySet="QuartosReservados">
+                <ScalarProperty Name="ReservaId" ColumnName="ReservaId" />
+                <ScalarProperty Name="ClienteNome" ColumnName="ClienteNome" />
+                <ScalarProperty Name="ClienteEndereco" ColumnName="ClienteEndereco" />
+                <ScalarProperty Name="ReservadoDataInicial" ColumnName="ReservadoDataInicial" />
+                <ScalarProperty Name="ReservaDataFinal" ColumnName="ReservaDataFinal" />
+                <ScalarProperty Name="QuartoReservadoId" ColumnName="QuartoReservadoId" />
+                <ScalarProperty Name="QuantidadePessoas" ColumnName="QuantidadePessoas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PagamentosTipo">
+            <EntityTypeMapping TypeName="HotelDBModel.PagamentosTipo">
+              <MappingFragment StoreEntitySet="PagamentosTipo">
+                <ScalarProperty Name="PagamentoTipoId" ColumnName="PagamentoTipoId" />
+                <ScalarProperty Name="PagamentoTipo" ColumnName="PagamentoTipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuartosTipo">
+            <EntityTypeMapping TypeName="HotelDBModel.QuartosTipo">
+              <MappingFragment StoreEntitySet="QuartosTipo">
+                <ScalarProperty Name="QuartoTipoID" ColumnName="QuartoTipoID" />
+                <ScalarProperty Name="QuartoTipo" ColumnName="QuartoTipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReservaStatus">
+            <EntityTypeMapping TypeName="HotelDBModel.ReservaStatus">
+              <MappingFragment StoreEntitySet="ReservaStatus">
+                <ScalarProperty Name="ReservaStatusId" ColumnName="ReservaStatusId" />
+                <ScalarProperty Name="ReservaStatus1" ColumnName="ReservaStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
