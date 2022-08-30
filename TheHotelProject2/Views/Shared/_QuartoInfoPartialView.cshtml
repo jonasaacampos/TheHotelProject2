@@ -1,0 +1,43 @@
+﻿@model IEnumerable<TheHotelProject2.ViewModel.QuartoInfoViewModel>
+
+<table style="width:100%">
+    <thead>
+        <tr>
+            <th>Action</th>
+            <th>Foto do quarto</th>
+            <th>Nº </th>
+            <th>Valor Diária</th>
+            <th>Disponibilidade</th>
+            <th>Tipo de acomodação</th>
+            <th>Capacidade</th>
+            <th>Descrição</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+
+            <td> teste</td>
+
+            <td>
+                <img src="@Url.Content("~/ImageQuartos/" + item.QuartoFoto)"
+                     alt="Alternate Text" width="30" height="30" class="img-responsive" />
+            </td>
+
+
+            <td>@item.QuartoNumero</td>
+            <td>@item.QuartoPreco</td>
+            <td>@item.ReservaStatus</td>
+            <td>@item.QuartoTipo</td>
+            <td>@item.QuartoCapacidade</td>
+            <td>@item.QuartoDescricao</td>
+
+        </tr>
+        }
+
+    </tbody>
+
+</table>

@@ -5,11 +5,35 @@
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
+
     $(document).ready(function () {
+
+        CarregarInfoQuartos();
+
         $('#btn-save').click(function () {
             SalvarDadosDoQuarto();
         });
     });
+
+
+    function CarregarInfoQuartos() {
+        $.ajax({
+            async: true,
+            data: 'GET',
+            dataType: 'HTML',
+            contentType: false,
+            processData: false,
+            url: '/Quartos/GetAllQuartos',
+            success: function (data) {
+                $("#CarregarInfoQuartos").html(data);
+            },
+            error: function () {
+                alert('Alguma coisa aconteceu e não estamos conseguindo listar os quartos cadastrados...')
+            }
+        })
+
+    }
+
 
     function SalvarDadosDoQuarto() {
         var formData = new FormData;
@@ -41,6 +65,7 @@
 
     }
 
+    
     function ApagarInfoQuarto() {
 
         $(  "#txtQuartoNumero"      ).val('');
@@ -139,5 +164,11 @@
             </div>
         </div>
     </div>
+
+</div>
+
+<div style="margin-top: 70px"></div>
+
+<div id="CarregarInfoQuartos">
 
 </div>

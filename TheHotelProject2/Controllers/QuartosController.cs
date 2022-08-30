@@ -69,5 +69,27 @@ namespace TheHotelProject2.Controllers
 
             return Json(data: new {message = "Quarto adicionado com sucesso!", success=true}, JsonRequestBehavior.AllowGet);
         }
+
+        public PartialViewResult GetAllQuartos()
+        {
+            IEnumerable<QuartoInfoViewModel> listQuartoInfoViewModels =
+                (from objQuarto in objHotelDBEntities.Quartos
+                 join objReserva in objHotelDBEntities.ReservaStatus on objQuarto.ReservaStatusId equals objReserva.ReservaStatusId
+                 join objQuartoTipo in objHotelDBEntities.QuartosTipo on objQuarto.QuartoTipoID equals objQuartoTipo.QuartoTipoID
+                 select new QuartoInfoViewModel()
+                 {
+                     QuartoNumero = objQuarto.QuartoNumero,
+                     QuartoDescricao = objQuarto.QuartoDescricao,
+                     QuartoCapacidade = objQuarto.QuartoCapacidade,
+                     QuartoPreco = objQuarto.QuartoPreco,
+                     ReservaStatus = objReserva.ReservaStatus1,
+                     QuartoTipo = objQuartoTipo.QuartoTipo,
+                     QuartoFoto = objQuarto.QuartoFoto,
+                     QuartoId = objQuarto.QuartoId,
+                 }).ToList();
+
+           return PartialView("_QuartoInfoPartialView", listQuartoInfoViewModels);
+
+        }
     }
 }
