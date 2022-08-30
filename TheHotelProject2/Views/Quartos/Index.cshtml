@@ -28,7 +28,10 @@
             processData: false,
             data: formData,
             success: function (data) {
-
+                if (data.success) {
+                    alert(data.message);
+                    ApagarInfoQuarto();
+                }
             },
 
             error: function () {
@@ -37,6 +40,20 @@
         })
 
     }
+
+    function ApagarInfoQuarto() {
+
+        $(  "#txtQuartoNumero"      ).val('');
+        $(  "#txtQuartoPreco"       ).val('');
+        $(  "#ddReservaStatus"      ).val('');
+        $(  "#ddQuartoTipo"         ).val('');
+        $(  "#txtQuartoCapacidade"  ).val('');
+        $(  "#txtQuartoDescricao"   ).val('');
+        $(  "#uploadImage"          ).val('');
+        $(  "#txtQuartoNumero"      ).focus(); // devolve o cursor para este campo após salvar
+        $(  "#quartoFoto"           ).removeAttr('src');
+    }
+
 
     function DisplayImage(result) {
         if (result.files && result.files[0]) {

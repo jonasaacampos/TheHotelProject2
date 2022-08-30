@@ -23,5 +23,6 @@ namespace TheHotelProject2.Models
         public int QuartoCapacidade { get; set; }
         public string QuartoDescricao { get; set; }
         public Nullable<bool> QuartoDisponivel { get; set; }
+
     }
 }

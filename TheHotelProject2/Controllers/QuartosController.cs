@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -45,7 +46,28 @@ namespace TheHotelProject2.Controllers
         [HttpPost]
         public ActionResult Index(QuartosViewModel objQuartosViewModel)
         {
-            return Json("", JsonRequestBehavior.AllowGet);
+            string ImageUniqueName = Guid.NewGuid().ToString();
+            string ImageUniqueNewName = ImageUniqueName + Path.GetExtension(objQuartosViewModel.Image.FileName);
+
+            objQuartosViewModel.Image.SaveAs(Server.MapPath("~/ImageQuartos/" + ImageUniqueNewName));
+
+            Quartos objQuarto = new Quartos()
+            {
+                QuartoNumero = objQuartosViewModel.QuartoNumero,
+                QuartoDescricao = objQuartosViewModel.QuartoDescricao,
+                QuartoPreco = objQuartosViewModel.QuartoPreco,
+                QuartoCapacidade = objQuartosViewModel.QuartoCapacidade,
+                ReservaStatusId = objQuartosViewModel.ReservaStatusId,
+                QuartoDisponivel = true,
+                QuartoFoto = ImageUniqueNewName,
+                QuartoId = objQuartosViewModel.QuartoTipoID,
+
+            };
+
+            objHotelDBEntities.Quartos.Add(objQuarto);
+            objHotelDBEntities.SaveChanges();
+
+            return Json(data: new {message = "Quarto adicionado com sucesso!", success=true}, JsonRequestBehavior.AllowGet);
         }
     }
 }

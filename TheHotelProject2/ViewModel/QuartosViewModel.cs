@@ -13,7 +13,7 @@ namespace TheHotelProject2.ViewModel
         public int QuartoId { get; set; }
         
         [Display(Name = "Nº do Quarto")]
-        public int QuartoNumero { get; set; }
+        public string QuartoNumero { get; set; }
 
         [Display(Name = "Foto do Quarto")]
         public string QuartoFoto { get; set; }
